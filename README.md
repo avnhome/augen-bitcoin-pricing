@@ -86,8 +86,8 @@ NOTE: It is a bit difference from the formula for the project description.
 ## 4. Provides a summary breakdown of the approximate time that you have spent developing thesolution
 
 
-○ Preparation: 1 hour
+○ Preparation: 30 minutes
 ○ Coding: 9 hours (including tests)
-○ Documentation: 1 hours 30 minutes
-○ Building and testing: 30 minutes
-○ Grand total: 12 hours
+○ Documentation:  30 minutes
+○ Building and testing: 1 hour
+○ Grand total: 11 hours
