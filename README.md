@@ -60,6 +60,7 @@ NOTE: It is a bit difference from the formula for the project description.
 
 ## 3. Explains application of design / patterns.
 
+
 - The project has 4 modules:
 	1. bitcoin-profit-factor-sender is in charge of generating a profit factor value per second then send it to kafka topic "profit-factor"
 	2. bitcoin-spot-price-sender is in charge of polling the Coinbase REST API with a 1 second interval then send it to kafka topic "spot-price"
@@ -70,16 +71,20 @@ NOTE: It is a bit difference from the formula for the project description.
 		The PriceDetailRegistry is in memory-database to store all spot price and profit factor by currency.
 		This module is also contains the Rest API http://localhost:7083/quote?amount=10&currency=NZD
 	
+	
 - This project take benifit of multiple modules like:
 	+ it follows micro service architecture.
 	+ Make it easy and flexible to deploy the application and also scale up down the module upon the situation
 	+ You can re-use the code from the modules across different projects.
 	+ I make the code clear and easy to read and understand by others.
 	
+	
+	
 - The project follow SOLID and DRY is to make the code clean, easy to change, maintain and grow up in the near future.
 
-## 4. Provides a summary breakdown of the approximate time that you have spent developing the
-solution
+
+## 4. Provides a summary breakdown of the approximate time that you have spent developing thesolution
+
 
 ○ Preparation: 1 hour
 ○ Coding: 9 hours (including tests)
