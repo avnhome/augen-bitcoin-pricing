@@ -1,43 +1,64 @@
 # AUGEN BITCOIN PRICING
 
 
-1. How To build and run application.
+## 1. How To build and run application.
 
-1.1 PREREQUISITE
+### 1.1 PREREQUISITE
 	- Java 8 or above
+	
 	- maven
+	
 	- kafka and apache-zookeeper
+	
 	Would you please help to make sure these above thing has install correctly before start the AUGEN BITCOIN PRICING APP.
 	
-1.2 Detail step to run this application.
+### 1.2 Detail step to run this application.
 
 	step 1: Execute the following command to "mvn clean package" to build and run unit test for this project.
+	
 	step 2: Start bitcoin-profit-factor-sender module using the following command.
+	
 		java -jar bitcoin-profit-factor-sender\target\bitcoin-profit-factor-sender-0.0.1-SNAPSHOT.jar
+		
 	step 3: Start bitcoin-spot-price-sender module using the following command.
+	
 		java -jar bitcoin-spot-price-sender\target\bitcoin-spot-price-sender-0.0.1-SNAPSHOT.jar
+		
     step 4: Start bitcoin-input-merger-processor module using the following command.
+
 		java -jar bitcoin-input-merger-processor\target\bitcoin-input-merger-processor-0.0.1-SNAPSHOT.jar
+		
 	step 5 Start bitcoin-pricing-api module using the following command.
+	
  		java -jar bitcoin-pricing-api\target\bitcoin-pricing-api-0.0.1-SNAPSHOT.jar
 	
 The API endpoints available at: http://localhost:7083/quote?amount=10&currency=NZD
+
 	This API will return a quot base on amount of bitcoin and currency.
+	
 	At the moment only NZD dolar is supported.
 
+
 Regarding how to calculate the price:
+
 	A. Spot price * profit factor * amount = profit margin
-	B. Buy or Sell price = spot price * amount + profit margin.
-NOTE: It is a bit difference from the formula for the project description.
 	
-2. Explains which API you have chosen to retrieve pricing information and why
+	B. Buy or Sell price = spot price * amount + profit margin.
+	
+NOTE: It is a bit difference from the formula for the project description.
+
+	
+## 2. Explains which API you have chosen to retrieve pricing information and why
 
 	I have chosen the Option 2: Poll the Coinbase REST API with a 1 second interval.
+	
 		Option 2: Poll the Coinbase REST API with a 1 second interval
+		
 		(https://developers.coinbase.com/docs/wallet/guides/price-data)
+		
 	Because I am most familiar with this option.
 
-3. Explains application of design / patterns.
+## 3. Explains application of design / patterns.
 
 - The project has 4 modules:
 	1. bitcoin-profit-factor-sender is in charge of generating a profit factor value per second then send it to kafka topic "profit-factor"
@@ -57,7 +78,7 @@ NOTE: It is a bit difference from the formula for the project description.
 	
 - The project follow SOLID and DRY is to make the code clean, easy to change, maintain and grow up in the near future.
 
-4. Provides a summary breakdown of the approximate time that you have spent developing the
+## 4. Provides a summary breakdown of the approximate time that you have spent developing the
 solution
 
 ○ Preparation: 1 hour
