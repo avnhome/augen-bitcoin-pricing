@@ -11,14 +11,29 @@ import com.augen.bitcoin.BitcoinPriceApiApplication;
 import com.augen.bitcoin.domain.PriceFactorDetail;
 import com.augen.bitcoin.registry.PriceDetailRegistry;
 
+/**
+ * This method is about to listens at input-merger kafka topic.
+ * @author quoca
+ *
+ */
 @Configuration
 public class BitcoinPricingLogger {
 
 	private static final Logger logger = LoggerFactory.getLogger(BitcoinPriceApiApplication.class);
 
+	/**
+	 * This registry is an in memory database to store latest price and profit factor of a currency.
+	 */
 	@Autowired
 	private PriceDetailRegistry coinPriceRegistry;
 
+	/**
+	 * his method is about to listens at input-merger kafka topic.
+	 * When receive an incoming message, then add it to coin price registy.
+	 * if the result return true then it is a change then log it
+	 * if not, then no need to log
+	 * @return
+	 */
 	@Bean
 	public Consumer<PriceFactorDetail> process() {
 		return priceFactorDetail -> {

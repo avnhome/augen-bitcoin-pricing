@@ -1,6 +1,10 @@
 package com.augen.bitcoin.domain;
 
-
+/**
+ * This is data model for coinbase spot price api result
+ * @author quoca
+ *
+ */
 public class CoinBaseSpotPriceData {
 	 private String amount;
 	 private String currency;

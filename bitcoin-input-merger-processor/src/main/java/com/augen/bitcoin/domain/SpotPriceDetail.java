@@ -1,5 +1,10 @@
 package com.augen.bitcoin.domain;
 
+/**
+ * The spot price data model
+ * @author quoca
+ *
+ */
 public class SpotPriceDetail {
 
 	public SpotPriceDetail() { }

@@ -8,9 +8,19 @@ import org.springframework.web.client.RestTemplate;
 
 import com.augen.bitcoin.domain.CoinBaseSpotPrice;
 
+/**
+ * this class is about to get spot price from coinbase api
+ * @author quoca
+ *
+ */
 @Service
 public class SpotPriceService {
 
+	/**
+	 * The getSpotPriceByCurrency calls coinbase spot price api to get latest spot price.
+	 * @param currency
+	 * @return Optional object of CoinBaseSpotPrice or Optional.empty()
+	 */
 	public Optional<CoinBaseSpotPrice> getSpotPriceByCurrency(String currency) {
 		String uri = "https://api.coinbase.com/v2/prices/spot?currency=" + currency;
 		RestTemplate restTemplate = new RestTemplate();

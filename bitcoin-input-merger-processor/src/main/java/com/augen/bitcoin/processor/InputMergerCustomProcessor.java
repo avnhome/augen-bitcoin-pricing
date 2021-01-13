@@ -5,6 +5,12 @@ import org.springframework.cloud.stream.annotation.Output;
 import org.springframework.messaging.MessageChannel;
 import org.springframework.messaging.SubscribableChannel;
 
+/**
+ * It contains customization for kafka topic
+ * We have 2 input channel and an output channel.
+ * @author quoca
+ *
+ */
 public interface InputMergerCustomProcessor {
 
 	String SPOT_PRICE_INPUT = "spotPrice";

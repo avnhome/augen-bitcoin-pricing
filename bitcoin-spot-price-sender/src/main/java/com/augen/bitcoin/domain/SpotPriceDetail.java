@@ -1,21 +1,12 @@
 package com.augen.bitcoin.domain;
 
+/**
+ * The Spot Price data model to send to kafka server
+ * @author quoca
+ *
+ */
 public class SpotPriceDetail {
 
-	
-
-	public SpotPriceDetail() { }
-
-	/**
-	 * @param currency
-	 * @param price
-	 */
-	public SpotPriceDetail(String currency, double price) {
-		super();
-		this.currency = currency;
-		this.price = price;
-	}
-	
 	private String currency;
 
 	private double price;
@@ -48,5 +39,17 @@ public class SpotPriceDetail {
 		this.price = price;
 	}
 
-	
+	public SpotPriceDetail() {
+	}
+
+	/**
+	 * @param currency
+	 * @param price
+	 */
+	public SpotPriceDetail(String currency, double price) {
+		super();
+		this.currency = currency;
+		this.price = price;
+	}
+
 }

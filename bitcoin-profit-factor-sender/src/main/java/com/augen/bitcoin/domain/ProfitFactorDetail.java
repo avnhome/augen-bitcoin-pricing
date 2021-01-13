@@ -1,5 +1,9 @@
 package com.augen.bitcoin.domain;
-
+/**
+ * This is Profit Factor data model
+ * @author quoca
+ *
+ */
 public class ProfitFactorDetail {
 
 	public ProfitFactorDetail() {

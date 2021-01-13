@@ -88,6 +88,6 @@ NOTE: It is a bit difference from the formula for the project description.
 
 ○ Preparation: 30 minutes
 ○ Coding: 9 hours (including tests)
-○ Documentation:  30 minutes
+○ Documentation:  1 hour
 ○ Building and testing: 1 hour
-○ Grand total: 11 hours
+○ Grand total: 11.5 hours

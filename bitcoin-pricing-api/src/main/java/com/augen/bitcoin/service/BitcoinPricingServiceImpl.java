@@ -11,14 +11,20 @@ import com.augen.bitcoin.formula.PricingFormula;
 import com.augen.bitcoin.registry.PriceDetailRegistry;
 import com.augen.bitcoin.utils.RoundMethod;
 
+/**
+ * This is a business service for api.
+ * @author quoca
+ *
+ */
 @Service
 public class BitcoinPricingServiceImpl implements BitcoinPricingService {
 
 	@Autowired
 	private PriceDetailRegistry coinPriceRegistry;
 
-	private static DecimalFormat decimalFormat = new DecimalFormat("0.00");
-
+	/**
+	 * {@inheritDoc}
+	 */
 	public Optional<Quote> quoteByBTC(String currency, int amount) {
 		Quote quote = new Quote();
 		Optional<PriceFactorDetail> priceFactorDetail = coinPriceRegistry.getCoinPriceByCurrency(currency);

@@ -1,5 +1,10 @@
 package com.augen.bitcoin.domain;
 
+/**
+ * The Price Factor data model
+ * @author quoca
+ *
+ */
 public class PriceFactorDetail {
 
 	private double profitFatorValue;

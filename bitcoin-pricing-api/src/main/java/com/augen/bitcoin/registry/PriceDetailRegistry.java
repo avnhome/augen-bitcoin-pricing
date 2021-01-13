@@ -5,6 +5,12 @@ import java.util.concurrent.ConcurrentHashMap;
 import org.springframework.stereotype.Component;
 import com.augen.bitcoin.domain.PriceFactorDetail;
 
+/**
+ * This registry is an in memory database to store latest price and profit factor of a currency.
+ * It is thread-safe as well
+ * @author quoca
+ *
+ */
 @Component
 public class PriceDetailRegistry {
 

@@ -10,11 +10,20 @@ import org.springframework.context.annotation.Configuration;
 
 import com.augen.bitcoin.domain.ProfitFactorDetail;
 
+/**
+ * This class is about to send ramdom profit factor value to kafka topic "profit-factor"
+ * @author quoca
+ *
+ */
 @Configuration
 public class ProfitFactorSender {
 
 	private List<Double> profitFactors = Arrays.asList(0.05, 0.1, 0.12);
 
+	/**
+	 * The method helps to send random profit factor value to kafka topic "profit-factor" per seconds
+	 * @return
+	 */
 	@Bean
 	public Supplier<ProfitFactorDetail> sendEvents() {
 		return () -> {
