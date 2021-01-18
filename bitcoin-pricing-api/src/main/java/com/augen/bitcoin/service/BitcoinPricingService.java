@@ -17,4 +17,12 @@ public interface BitcoinPricingService {
 	 * @return Optional<Quote>
 	 */
 	Optional<Quote> quoteByBTC(String currency, int amount);
+	
+	/**
+	 * This method helps us to generate the quote based on the currency and money amount
+	 * @param currency
+	 * @param amount
+	 * @return Optional<Quote>
+	 */
+	Optional<Quote> quoteByMoney(String currency, int amount);
 }

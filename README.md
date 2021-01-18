@@ -32,13 +32,16 @@
 	
  		java -jar bitcoin-pricing-api\target\bitcoin-pricing-api-0.0.1-SNAPSHOT.jar
 	
-The API endpoints available at: http://localhost:7083/quote?amount=10&currency=NZD
+The API endpoints available at: http://localhost:7083/quotes/btc?amount=10&currency=NZD
 
 	This API will return a quot base on amount of bitcoin and currency.
 	
 	At the moment only NZD dolar is supported.
 
-
+	How many btc by this amount of coin.
+	http://localhost:7083/quotes/money?amount=10&currency=NZD
+	
+	
 Regarding how to calculate the price:
 
 	A. Spot price * profit factor * amount = profit margin

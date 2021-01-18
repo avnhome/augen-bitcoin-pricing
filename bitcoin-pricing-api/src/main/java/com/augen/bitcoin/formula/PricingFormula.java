@@ -30,4 +30,16 @@ public class PricingFormula {
 	public static double buyOrSellPrice(double spotPrice, double profitFactor, int amount) {
 		return (spotPrice * amount) + profitMargin(spotPrice, profitFactor, amount);
 	}
+	
+	/**
+	 * This method help us to calculate the number of btc by an amount of money
+	 * btcByMoney = amount of money / Buy or Sell price of 1 BTC
+	 * @param spotPrice
+	 * @param profitFactor
+	 * @param amount
+	 * @return
+	 */
+	public static double btcByMoney(double spotPrice, double profitFactor, int amount) {
+		return amount / buyOrSellPrice(spotPrice, profitFactor, 1);
+	}
 }

@@ -14,6 +14,7 @@ import com.augen.bitcoin.utils.RoundMethod;
 
 /**
  * This is a business service for api.
+ * 
  * @author quoca
  *
  */
@@ -25,6 +26,7 @@ public class BitcoinPricingServiceImpl implements BitcoinPricingService {
 
 	@Autowired
 	private NewCurrencySender newCurrencySender;
+
 	/**
 	 * {@inheritDoc}
 	 */
@@ -51,6 +53,34 @@ public class BitcoinPricingServiceImpl implements BitcoinPricingService {
 
 		}
 
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public Optional<Quote> quoteByMoney(String currency, int amount) {
+		Quote quote = new Quote();
+		Optional<PriceFactorDetail> priceFactorDetail = coinPriceRegistry.getCoinPriceByCurrency(currency);
+		if (priceFactorDetail.isPresent()) {
+			double profitFactor, spotPrice, bitcoinAmount;
+			profitFactor = priceFactorDetail.get().getProfitFatorValue();
+			spotPrice = priceFactorDetail.get().getPrice();
+			bitcoinAmount = PricingFormula.btcByMoney(spotPrice, profitFactor, amount);
+			quote.setAmount((int) bitcoinAmount);
+			quote.setId(UUID.randomUUID().toString());
+
+			System.out
+					.println("priceFactorDetail.getProfitFatorValue()" + priceFactorDetail.get().getProfitFatorValue());
+			quote.setProfitFator(profitFactor);
+			quote.setSpotPrice(RoundMethod.Round(spotPrice, 2));
+			quote.setTotalPrice(amount);
+			return Optional.of(quote);
+		} else {
+			newCurrencySender.sendCurrency(currency);
+			return Optional.empty();
+
+		}
 	}
 
 }

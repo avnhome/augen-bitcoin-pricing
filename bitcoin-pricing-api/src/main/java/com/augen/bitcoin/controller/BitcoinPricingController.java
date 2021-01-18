@@ -27,8 +27,18 @@ public class BitcoinPricingController {
 	 * @param amount amount of bitcoin
 	 * @return Quote
 	 */
-	 @GetMapping("/quote")
+	 @GetMapping("/quotes/btc")
 	 public Quote quoteByBTC(@RequestParam(name = "currency", defaultValue = "NZD") String currency, @RequestParam(name = "amount", defaultValue = "0") int amount) {
 	    return bitcoinPricingService.quoteByBTC(currency, amount).orElseThrow(() -> new CurrencyNotFoundException(currency));
 	  }
+		/**
+		 * This method for quote api to create quote result based on currency and amount of bitcoin
+		 * @param currency Currency
+		 * @param amount amount of bitcoin
+		 * @return Quote
+		 */
+		 @GetMapping("/quotes/money")
+		 public Quote quoteByMoney(@RequestParam(name = "currency", defaultValue = "NZD") String currency, @RequestParam(name = "amount", defaultValue = "0") int amount) {
+		    return bitcoinPricingService.quoteByMoney(currency, amount).orElseThrow(() -> new CurrencyNotFoundException(currency));
+		  }
 }
