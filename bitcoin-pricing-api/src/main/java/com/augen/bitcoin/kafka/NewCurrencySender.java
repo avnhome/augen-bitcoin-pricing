@@ -22,7 +22,7 @@ public class NewCurrencySender {
 
 	public void sendCurrency(String currency) {
 		System.out.println("Send currency to topic: " + currency + ": new-currency");
-		ListenableFuture<SendResult<Object, Object>> future= this.template.send("new-currency", currency);
+		ListenableFuture<SendResult<Object, Object>> future= this.template.send("new-currency", currency.getBytes());
 		
 		future.addCallback(new ListenableFutureCallback<SendResult<Object, Object>>() {
 

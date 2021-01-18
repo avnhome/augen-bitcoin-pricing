@@ -75,7 +75,7 @@ public class InputMergerProcessorProcessor {
 	private PriceFactorDetail buildPriceFactorDetail(String currency) {
 		System.out.println("profitFactor.get(): " + profitFactor.get());
 		
-		System.out.println("spotPrices.get(currency): " + spotPrices.get(currency));
+		System.out.println("spotPrices.get(currency): " + spotPrices.get(currency).toString());
 		if (profitFactor.get() != null && spotPrices.get(currency) != null) {
 			SpotPriceDetail spotPrice = spotPrices.get(currency);
 			PriceFactorDetail priceFactorDetail = new PriceFactorDetail();
