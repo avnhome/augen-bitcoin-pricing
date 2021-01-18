@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.augen.bitcoin.domain.PriceFactorDetail;
 import com.augen.bitcoin.domain.Quote;
 import com.augen.bitcoin.formula.PricingFormula;
+import com.augen.bitcoin.kafka.NewCurrencySender;
 import com.augen.bitcoin.registry.PriceDetailRegistry;
 import com.augen.bitcoin.utils.RoundMethod;
 
@@ -22,6 +23,8 @@ public class BitcoinPricingServiceImpl implements BitcoinPricingService {
 	@Autowired
 	private PriceDetailRegistry coinPriceRegistry;
 
+	@Autowired
+	private NewCurrencySender newCurrencySender;
 	/**
 	 * {@inheritDoc}
 	 */
@@ -43,6 +46,7 @@ public class BitcoinPricingServiceImpl implements BitcoinPricingService {
 			quote.setTotalPrice(RoundMethod.Round(PricingFormula.buyOrSellPrice(spotPrice, profitFactor, amount), 2));
 			return Optional.of(quote);
 		} else {
+			newCurrencySender.sendCurrency(currency);
 			return Optional.empty();
 
 		}

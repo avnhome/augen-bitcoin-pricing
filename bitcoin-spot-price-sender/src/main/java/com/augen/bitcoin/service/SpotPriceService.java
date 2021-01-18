@@ -22,7 +22,9 @@ public class SpotPriceService {
 	 * @return Optional object of CoinBaseSpotPrice or Optional.empty()
 	 */
 	public Optional<CoinBaseSpotPrice> getSpotPriceByCurrency(String currency) {
+		System.out.println("getSpotPriceByCurrency- String currency : " + currency);
 		String uri = "https://api.coinbase.com/v2/prices/spot?currency=" + currency;
+		System.out.println("uri: " + uri);
 		RestTemplate restTemplate = new RestTemplate();
 		ResponseEntity<CoinBaseSpotPrice> response = restTemplate.getForEntity(uri, CoinBaseSpotPrice.class);
 		if (response.getStatusCode().is2xxSuccessful()) {
