@@ -34,7 +34,7 @@ public class InputMergerProcessorApplicationTests {
 				TestChannelBinderConfiguration.getCompleteConfiguration(
 						InputMergerProcessorApplication.class)).web(WebApplicationType.NONE)
 				.run("spring.cloud.stream.function.bindings.processSpotPrice-in-0=spotPrice",
-						"spring.cloud.stream.function.bindings.processSpotPrice-out-0=inputMerger",
+						"spring.cloud.stream.function.bindings.sendPriceFactorDetail-out-0=inputMerger",
 						"spring.cloud.stream.bindings.spotPrice.destination=spot-price",
 						"spring.cloud.stream.bindings.inputMerger.destination=input-merger"
 						
@@ -57,7 +57,7 @@ public class InputMergerProcessorApplicationTests {
 
 			OutputDestination target = context.getBean(OutputDestination.class);
 			Message<byte[]> sourceMessage = target.receive(10000, "input-merger");
-
+			System.out.println("sourceMessage: testProcessSpotPrice 77777"+ sourceMessage);
 			final PriceFactorDetail priceFactorDetail = (PriceFactorDetail) converter
 					.fromMessage(sourceMessage, PriceFactorDetail.class);
 
@@ -72,7 +72,7 @@ public class InputMergerProcessorApplicationTests {
 				TestChannelBinderConfiguration.getCompleteConfiguration(
 						InputMergerProcessorApplication.class)).web(WebApplicationType.NONE)
 				.run("spring.cloud.stream.function.bindings.processProfitFactor-in-0=profitFactor",
-						"spring.cloud.stream.function.bindings.processSpotPrice-out-0=inputMerger",
+						"spring.cloud.stream.function.bindings.sendPriceFactorDetail-out-0=inputMerger",
 						"spring.cloud.stream.bindings.profitFactor.destination=profit-factor",
 						"spring.cloud.stream.bindings.inputMerger.destination=input-merger"
 						
@@ -95,6 +95,7 @@ public class InputMergerProcessorApplicationTests {
 			OutputDestination target = context.getBean(OutputDestination.class);
 			Message<byte[]> sourceMessage = target.receive(10000, "input-merger");
 
+			System.out.println("sourceMessage: testProcessProfitFactor 88888"+ sourceMessage);
 			final PriceFactorDetail priceFactorDetail = (PriceFactorDetail) converter
 					.fromMessage(sourceMessage, PriceFactorDetail.class);
 

@@ -9,18 +9,23 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import com.augen.bitcoin.domain.PriceFactorDetail;
 import com.augen.bitcoin.domain.Quote;
+import com.augen.bitcoin.kafka.NewCurrencySender;
 import com.augen.bitcoin.registry.PriceDetailRegistry;
+import com.augen.bitcoin.service.BitcoinPricingService;
 import com.augen.bitcoin.service.BitcoinPricingServiceImpl;
 
 @WebMvcTest(BitcoinPricingServiceImpl.class)
 public class BitcoinPricingServiceTests {
 
 	@Autowired
-	private BitcoinPricingServiceImpl bitcoinPricingService;
+	private BitcoinPricingService bitcoinPricingService;
 
 	@MockBean
 	private PriceDetailRegistry coinPriceRegistry;
 
+	@MockBean
+	private NewCurrencySender newCurrencySender;
+	
 	@Test
 	public void contextLoads() {
 	}

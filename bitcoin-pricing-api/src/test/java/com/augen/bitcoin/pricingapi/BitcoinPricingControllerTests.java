@@ -18,7 +18,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import com.augen.bitcoin.controller.BitcoinPricingController;
 import com.augen.bitcoin.domain.Quote;
-import com.augen.bitcoin.service.BitcoinPricingServiceImpl;
+import com.augen.bitcoin.service.BitcoinPricingService;
 
 @WebMvcTest(BitcoinPricingController.class)
 public class BitcoinPricingControllerTests {
@@ -27,7 +27,7 @@ public class BitcoinPricingControllerTests {
 	private MockMvc mvc;
 
 	@MockBean
-	private BitcoinPricingServiceImpl service;
+	private BitcoinPricingService service;
 
 	@Test
 	public void contextLoads() {
@@ -46,7 +46,7 @@ public class BitcoinPricingControllerTests {
 
 		when(service.quoteByBTC("NZD", 1000)).thenReturn(Optional.of(quote));
 
-		this.mvc.perform(get("/quote?currency=NZD&amount=1000")
+		this.mvc.perform(get("/quotes/btc?currency=NZD&amount=1000")
 				.contentType(MediaType.APPLICATION_JSON))
 				.andDo(print())
 				.andExpect(status().isOk())
