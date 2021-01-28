@@ -5,18 +5,21 @@ import static org.mockito.Mockito.when;
 import java.util.Optional;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import com.augen.bitcoin.domain.PriceFactorDetail;
 import com.augen.bitcoin.domain.Quote;
 import com.augen.bitcoin.registry.PriceDetailRegistry;
+import com.augen.bitcoin.service.BitcoinPricingService;
 import com.augen.bitcoin.service.BitcoinPricingServiceImpl;
 
 @WebMvcTest(BitcoinPricingServiceImpl.class)
 public class BitcoinPricingServiceTests {
 
 	@Autowired
-	private BitcoinPricingServiceImpl bitcoinPricingService;
+	@Qualifier("bitcoinPricingServiceImpl")
+	private BitcoinPricingService bitcoinPricingService;
 
 	@MockBean
 	private PriceDetailRegistry coinPriceRegistry;

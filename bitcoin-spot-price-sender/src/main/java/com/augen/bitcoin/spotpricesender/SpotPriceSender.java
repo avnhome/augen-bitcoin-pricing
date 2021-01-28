@@ -22,7 +22,7 @@ public class SpotPriceSender {
 	private final SpotPriceDetail defaultSpotPriceDetail = new SpotPriceDetail("000", 0);
 
 	@Autowired
-	SpotPriceService spotPriceService;
+	private SpotPriceService spotPriceService;
 
 	/**
 	 * This supplier is about to get data from coinbase api per seconds then send result to kafka topic "spot-price"

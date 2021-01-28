@@ -6,7 +6,7 @@ package com.augen.bitcoin.domain;
  *
  */
 public class CoinBaseSpotPrice {
-	CoinBaseSpotPriceData DataObject;
+	private CoinBaseSpotPriceData DataObject;
 
 
 	 // Getter Methods 

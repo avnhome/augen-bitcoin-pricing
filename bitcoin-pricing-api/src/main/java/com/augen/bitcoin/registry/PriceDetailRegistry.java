@@ -26,7 +26,7 @@ public class PriceDetailRegistry {
 
 	}
 
-	public Optional<PriceFactorDetail> getCoinPriceByCurrency(String key) {
+	public synchronized Optional<PriceFactorDetail> getCoinPriceByCurrency(String key) {
 		if (containsKey(key)) {
 			return Optional.ofNullable(coinPrices.get(key));
 		} else {
@@ -38,7 +38,7 @@ public class PriceDetailRegistry {
 		return coinPrices.containsKey(key);
 	}
 
-	private boolean isExisting(String key, PriceFactorDetail usageCostDetail) {
+	private synchronized boolean isExisting(String key, PriceFactorDetail usageCostDetail) {
 		return coinPrices.get(key) != null && coinPrices.get(key).equals(usageCostDetail);
 	}
 }

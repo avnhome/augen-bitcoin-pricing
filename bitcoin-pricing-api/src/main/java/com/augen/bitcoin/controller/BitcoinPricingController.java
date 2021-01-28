@@ -1,6 +1,7 @@
 package com.augen.bitcoin.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,6 +20,7 @@ public class BitcoinPricingController {
 
 	
 	@Autowired
+	@Qualifier("bitcoinPricingServiceImpl")
 	private BitcoinPricingService bitcoinPricingService;
 	
 	/**
